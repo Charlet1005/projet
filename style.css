@@ -188,3 +188,37 @@ header h1 {
 body {
   padding-top: 60px; /* Ajuste selon la hauteur du header */
 }
+
+header nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+
+nav ul.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-end;
+}
+
+nav ul.menu li a {
+  background-color: #eee;
+  color: var(--main-color);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+}
+
+nav button {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
