@@ -249,3 +249,21 @@ if (user) {
     userDisplay.textContent = `👤 ${user}`;
   }
 }
+
+// === CLEAR DATA BASE ===
+const clearDataBtn = document.getElementById("clearDataBtn");
+
+// Affiche le bouton uniquement si l'utilisateur est admin (par exemple "ADMIN")
+const currentUser = localStorage.getItem("username");
+if (currentUser === "ADMIN") {
+  clearDataBtn.style.display = "inline-block";
+}
+
+// Action du bouton
+clearDataBtn.addEventListener("click", () => {
+  if (confirm("⚠️ Tu vas supprimer toutes les données de l’application. Continuer ?")) {
+    localStorage.clear();
+    alert("🧹 Données supprimées !");
+    location.reload();
+  }
+});
