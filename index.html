@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8" /> <!-- pour avoir les caractères spéciaux type é, à, ù etc...-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!-- pour rendre compatible sur mobile et éviter les déformations-->
-  <title>Mon Journal</title>
+  <title>Chaussis's News</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <header>
+        <h1>Chaussis's News</h1>
+    </header>
     <div class="side-menu">
         <ul class="menu">
             <li><a href="famille.html">👨‍👩‍👧 Famille</a></li>
@@ -22,7 +25,7 @@
 
   <main>
     <section class="journal-section">
-      <h2>Nouvelle entrée</h2>
+      <h2>Nouvel Article</h2>
         <form id="entry-form">
         <label for="category">Catégorie :</label>
         <select id="category" required>
@@ -39,7 +42,7 @@
     </section>
 
     <section class="dashboard">
-        <h2>🧾 Dernières entrées par catégorie</h2>
+        <h2>🧾 Derniers articles par catégorie</h2>
 
         <div class="preview-section" id="preview-famille">
             <h3>👨‍👩‍👧 Famille</h3>
