@@ -160,8 +160,30 @@ body.dark select {
   }
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--main-color);
+  color: white;
+  z-index: 1000;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Centrer le titre */
 header h1 {
+  margin: 0 auto;
   text-align: center;
-  margin: 1rem auto;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  flex-grow: 1;
+}
+
+/* Pour éviter que le contenu passe derrière */
+body {
+  padding-top: 100px; /* Ajuste selon la hauteur du header */
 }
