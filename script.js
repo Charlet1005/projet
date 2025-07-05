@@ -132,3 +132,20 @@ previewCategories.forEach(cat => {
     container.appendChild(li);
   });
 });
+
+  // Récupérer le nom de la catégorie depuis l’ID de la section
+  const previewSection = document.querySelector(".preview-section");
+  if (previewSection) {
+    const id = previewSection.id.replace("preview-", "");
+    const data = JSON.parse(localStorage.getItem(id) || "[]");
+
+    const ul = previewSection.querySelector(".preview-list");
+    if (ul) {
+      data.forEach(entry => {
+        const li = document.createElement("li");
+        const date = new Date(entry.date);
+        li.innerHTML = `<strong>${date.toLocaleDateString()} à ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</strong><br>${entry.text}`;
+        ul.appendChild(li);
+      });
+    }
+  }

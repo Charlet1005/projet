@@ -66,13 +66,18 @@ header h1 {
 }
 
 .side-menu a {
-  background-color: transparent;
-  border: 2px solid var(--main-color);
-  color: var(--main-color);
+  background-color: var(--main-color);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  display: inline-block;
 }
+
 .side-menu a:hover {
   background-color: var(--hover-color);
-  color: white;
 }
 
 .side-menu button {
