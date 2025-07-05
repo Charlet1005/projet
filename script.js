@@ -157,6 +157,8 @@ if (document.getElementById("editor-container")) {
       entries.unshift(entry);
       localStorage.setItem(category, JSON.stringify(entries));
 
+      sauvegarderVersGoogleSheet(entry);
+
       categoryForm.reset();
       quill.root.innerHTML = "";
       if (preview) preview.innerHTML = "";
@@ -236,27 +238,6 @@ previewCategories.forEach(cat => {
   });
 });
 
-// === PRÉVISUALISATION PAR CATÉGORIE ===
-/* const previewSection = document.querySelector(".preview-section");
-  if (previewSection) {
-  const id = previewSection.id.replace("preview-", "");
-  const data = JSON.parse(localStorage.getItem(id) || "[]");
-
-  const ul = previewSection.querySelector(".preview-list");
-  if (ul) {
-    data.forEach(entry => {
-      const li = document.createElement("li");
-      const date = new Date(entry.date);
-      li.innerHTML = `
-        <strong>${date.toLocaleDateString()} à ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</strong><br>
-        <em>par ${entry.author || "Anonyme"}</em><br>
-        ${entry.text}
-      `;
-      ul.appendChild(li);
-    });
-  }
-} */
-
 // === AFFICHER UTILISATEUR CONNECTÉ ===
 const user = localStorage.getItem("username");
 if (user) {
@@ -300,3 +281,16 @@ if (currentUser === "ADMIN") {
   if (resetBtn) resetBtn.style.display = "none";
 }
 
+// === EXPORT DATA ===
+function sauvegarderVersGoogleSheet(entry) {
+  fetch("https://script.google.com/macros/s/AKfycbyD7MKx2nUFoueiRyjLC_pOyQypLrKb9ESsB9JY-vbYA_uTdkjydox54fqprYEL7YhG/exec", {
+    method: "POST",
+    body: JSON.stringify(entry),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.text())
+  .then(msg => console.log("Sauvegarde GSheet : ", msg))
+  .catch(err => console.error("Erreur GSheet :", err));
+}
