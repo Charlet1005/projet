@@ -83,13 +83,13 @@ previewCategories.forEach(cat => {
 });
 
 // header
-window.addEventListener("load", adjustPaddingTop);
-window.addEventListener("resize", adjustPaddingTop);
-
 function adjustPaddingTop() {
   const header = document.querySelector("header");
   if (header) {
-    const headerHeight = header.offsetHeight;
-    document.body.style.paddingTop = headerHeight + "px";
+    const height = header.offsetHeight;
+    document.body.style.paddingTop = height + "px";
   }
 }
+
+window.addEventListener("load", adjustPaddingTop);
+window.addEventListener("resize", adjustPaddingTop);
