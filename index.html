@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" /> -- pour avoir les caractères spéciaux type é, à, ù etc...
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -- pour rendre compatible sur mobile et éviter les déformations
+  <title>Mon Journal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <nav>
+        <h1>Journal de Romane</h1>
+        <ul class="menu">
+            <li><a href="famille.html">👨‍👩‍👧 Famille</a></li>
+            <li><a href="hobbies.html">🎨 Hobbies</a></li>
+            <li><a href="medical.html">💊 Médical</a></li>
+            <li><a href="pro.html">💼 Pro</a></li>
+        </ul>
+        <button id="toggleTheme">🌗</button>
+        <button id="logout">Déconnexion</button>
+    </nav>
+
+
+  <main>
+    <section class="journal-section">
+      <h2>Nouvelle entrée</h2>
+        <form id="entry-form">
+        <label for="category">Catégorie :</label>
+        <select id="category" required>
+            <option value="">-- Choisir --</option>
+            <option value="famille">Famille</option>
+            <option value="hobbies">Hobbies</option>
+            <option value="medical">Médical</option>
+            <option value="pro">Pro</option>
+        </select>
+
+        <textarea id="entry-text" placeholder="Écris ton texte ici..." required></textarea>
+        <button type="submit">Sauvegarder</button>
+        </form>
+    </section>
+
+    <section class="dashboard">
+        <h2>🧾 Dernières entrées par catégorie</h2>
+
+        <div class="preview-section" id="preview-famille">
+            <h3>👨‍👩‍👧 Famille</h3>
+            <ul class="preview-list"></ul>
+        </div>
+
+        <div class="preview-section" id="preview-hobbies">
+            <h3>🎨 Hobbies</h3>
+            <ul class="preview-list"></ul>
+        </div>
+
+        <div class="preview-section" id="preview-medical">
+            <h3>💊 Médical</h3>
+            <ul class="preview-list"></ul>
+        </div>
+
+        <div class="preview-section" id="preview-pro">
+            <h3>💼 Pro</h3>
+            <ul class="preview-list"></ul>
+        </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
