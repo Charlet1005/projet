@@ -28,7 +28,7 @@ if (window.location.pathname.includes("login.html")) {
   }
 }
 
-// === THEME SOMBRE / CLAIR ===
+// === THEME CLAIR / SOMBRE ===
 const toggleTheme = document.getElementById("toggleTheme");
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
@@ -41,7 +41,7 @@ if (toggleTheme) {
   });
 }
 
-// === AJUSTEMENT HEADER ===
+// === HEADER SPACING ===
 function adjustPaddingTop() {
   const header = document.querySelector("header");
   if (header) {
@@ -51,7 +51,7 @@ function adjustPaddingTop() {
 window.addEventListener("load", adjustPaddingTop);
 window.addEventListener("resize", adjustPaddingTop);
 
-// === QUILL - EDITEUR DE TEXTE ===
+// === EDITEUR QUILL ===
 const quill = new Quill('#editor-container', {
   theme: 'snow',
   modules: {
@@ -66,10 +66,26 @@ const quill = new Quill('#editor-container', {
   }
 });
 
-// === PREVISUALISATION EN TEMPS REEL ===
+// === PREVIEW EN TEMPS REEL ===
 const preview = document.getElementById("preview");
 quill.on('text-change', () => {
   if (preview) preview.innerHTML = quill.root.innerHTML;
+});
+
+// === NOTIFICATION ===
+const notif = document.getElementById("notif");
+const notifMsg = document.getElementById("notif-msg");
+const notifClose = document.getElementById("notif-close");
+
+function showNotification(message) {
+  notifMsg.textContent = message;
+  notif.style.display = "flex";
+  setTimeout(() => {
+    notif.style.display = "none";
+  }, 4000);
+}
+notifClose.addEventListener("click", () => {
+  notif.style.display = "none";
 });
 
 // === FORMULAIRE DE SOUMISSION ===
@@ -94,13 +110,14 @@ if (categoryForm) {
     localStorage.setItem(category, JSON.stringify(entries));
 
     categoryForm.reset();
-    quill.setText("");
+    quill.root.innerHTML = "";
     if (preview) preview.innerHTML = "";
-    alert(`Entrée enregistrée dans la catégorie "${category}"`);
+
+    showNotification(`✅ Enregistré dans "${category}"`);
   });
 }
 
-// === DASHBOARD - APERÇU DES DERNIÈRES ENTRÉES ===
+// === DASHBOARD - DERNIÈRES ENTRÉES ===
 const previewCategories = ["famille", "hobbies", "medical", "pro"];
 previewCategories.forEach(cat => {
   const container = document.querySelector(`#preview-${cat} .preview-list`);
@@ -109,8 +126,8 @@ previewCategories.forEach(cat => {
   const data = JSON.parse(localStorage.getItem(cat) || "[]");
   const latest = data.slice(0, 2);
   latest.forEach(entry => {
-    const li = document.createElement("li");
     const date = new Date(entry.date);
+    const li = document.createElement("li");
     li.innerHTML = `<strong>${date.toLocaleDateString()} à ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</strong><br>${entry.text}`;
     container.appendChild(li);
   });
