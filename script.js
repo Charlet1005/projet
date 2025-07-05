@@ -192,7 +192,8 @@ if (document.getElementById("editor-container")) {
 
       const entries = JSON.parse(localStorage.getItem(category) || "[]");
       entries[index] = entry;
-      localStorage.setItem(category, JSON.stringify(entries));
+      localStorage.setItem(category, JSON.stringify(entries))
+      sauvegarderVersGoogleSheet(entry);
 
       alert("Article modifié !");
       location.reload();
