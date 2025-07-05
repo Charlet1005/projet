@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Inscription au Chaussis's News</h1>
+    </header>
+
+    <div class="side-menu">
+        <div class="nav-actions">
+            <button id="toggleTheme">🌗</button>
+        </div>
+    </div>
+  <div class="login-container">
+    <h2>Créer un compte</h2>
+    <form id="register-form">
+        <input type="text" id="new-username" placeholder="Nom d'utilisateur" required>
+        <input type="password" id="new-password" placeholder="Mot de passe" required>
+        <button type="submit">S'inscrire</button>
+        <p id="register-error" class="error"></p>
+    </form>
+    <a href="login.html">Déjà un compte ? Se connecter</a>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
