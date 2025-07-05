@@ -77,7 +77,7 @@ header h1 {
 }
 
 .side-menu a:hover {
-  background-color: var(--hover-color);
+  background-color: transparent;
 }
 
 .side-menu button {
