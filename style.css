@@ -159,3 +159,9 @@ body.dark select {
     margin-top: 0.5rem;
   }
 }
+
+header h1 {
+  text-align: center;
+  margin: 1rem auto;
+  font-size: 2rem;
+}
