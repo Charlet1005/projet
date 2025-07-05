@@ -104,6 +104,7 @@ if (notifClose) {
 
 // === EDITEUR + FORMULAIRE DE SOUMISSION ===
 let quill;
+
 if (document.getElementById("editor-container")) {
   quill = new Quill('#editor-container', {
     theme: 'snow',
@@ -119,18 +120,31 @@ if (document.getElementById("editor-container")) {
     }
   });
 
+  // === PRÉVIEW EN TEMPS RÉEL AVEC IMAGES REDIMENSIONNÉES ===
   const preview = document.getElementById("preview");
   quill.on('text-change', () => {
-    if (preview) preview.innerHTML = quill.root.innerHTML;
+    if (preview) {
+      preview.innerHTML = quill.root.innerHTML;
+      preview.querySelectorAll("img").forEach(img => {
+        img.style.maxWidth = "100%";
+        img.style.height = "auto";
+        img.style.display = "block";
+        img.style.margin = "1rem auto";
+        img.style.borderRadius = "6px";
+      });
+    }
   });
 
+  // === FORMULAIRE DE PUBLICATION ===
   const categoryForm = document.getElementById("entry-form");
   if (categoryForm) {
     categoryForm.addEventListener("submit", function handleSubmit(e) {
       e.preventDefault();
+
       const category = document.getElementById("category").value;
       const html = quill.root.innerHTML;
       document.getElementById("entry-text").value = html;
+
       if (!category || !html.trim()) return;
 
       const entry = {
@@ -151,7 +165,7 @@ if (document.getElementById("editor-container")) {
     });
   }
 
-  // === FONCTIONS EDIT + DELETE ===
+  // === SUPPRIMER UNE ENTRÉE ===
   window.deleteEntry = function (category, index) {
     const entries = JSON.parse(localStorage.getItem(category) || "[]");
     if (confirm("Confirmer la suppression ?")) {
@@ -159,8 +173,9 @@ if (document.getElementById("editor-container")) {
       localStorage.setItem(category, JSON.stringify(entries));
       location.reload();
     }
-  }
+  };
 
+  // === MODIFIER UNE ENTRÉE ===
   window.editEntry = function (category, index, entry) {
     document.getElementById("category").value = category;
     quill.root.innerHTML = entry.text;
@@ -168,6 +183,7 @@ if (document.getElementById("editor-container")) {
     const form = document.getElementById("entry-form");
     form.addEventListener("submit", function handleEdit(e) {
       e.preventDefault();
+
       const updatedText = quill.root.innerHTML;
       entry.text = updatedText;
       entry.date = new Date();
@@ -179,7 +195,7 @@ if (document.getElementById("editor-container")) {
       alert("Article modifié !");
       location.reload();
     }, { once: true });
-  }
+  };
 }
 
 // === DASHBOARD - DERNIÈRES ENTRÉES ===
@@ -221,8 +237,8 @@ previewCategories.forEach(cat => {
 });
 
 // === PRÉVISUALISATION PAR CATÉGORIE ===
-const previewSection = document.querySelector(".preview-section");
-if (previewSection) {
+/* const previewSection = document.querySelector(".preview-section");
+  if (previewSection) {
   const id = previewSection.id.replace("preview-", "");
   const data = JSON.parse(localStorage.getItem(id) || "[]");
 
@@ -239,7 +255,7 @@ if (previewSection) {
       ul.appendChild(li);
     });
   }
-}
+} */
 
 // === AFFICHER UTILISATEUR CONNECTÉ ===
 const user = localStorage.getItem("username");

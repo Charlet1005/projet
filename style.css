@@ -193,6 +193,15 @@ body.dark #editor-container {
   font-size: 0.95rem;
 }
 
+.preview-list img,
+.preview-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 6px;
+}
+
 .notification {
   display: flex;
   align-items: center;
