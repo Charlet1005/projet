@@ -66,22 +66,34 @@ header h1 {
 }
 
 .side-menu a {
-  background-color: #eee;
-  color: var(--main-color);
+  background-color: var(--card-bg);
+  color: var(--text-color);
   text-decoration: none;
   padding: 0.4rem 0.6rem;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   font-size: 0.9rem;
+  border: 1px solid var(--main-color);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.side-menu a:hover {
+  background-color: var(--hover-color);
+  color: white;
 }
 
 .side-menu button {
   background-color: var(--main-color);
   color: white;
-  border: 2px solid white;
-  border-radius: 6px;
-  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.4rem 0.6rem;
   font-size: 0.9rem;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.side-menu button:hover {
+  background-color: var(--hover-color);
 }
 
 /* CONTENU PRINCIPAL */
@@ -154,4 +166,27 @@ body.dark li {
     left: auto;
     right: 1rem;
   }
+}
+
+#editor-container {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+/* En thème sombre */
+body.dark #editor-container {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #555;
+}
+
+.preview-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--card-bg);
+  border: 1px dashed var(--main-color);
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
 }
