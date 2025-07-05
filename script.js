@@ -267,3 +267,23 @@ clearDataBtn.addEventListener("click", () => {
     location.reload();
   }
 });
+
+const resetBtn = document.getElementById("reset-data");
+const confirmBox = document.getElementById("custom-confirm");
+const confirmReset = document.getElementById("confirm-reset");
+const cancelReset = document.getElementById("cancel-reset");
+
+if (resetBtn) {
+  resetBtn.addEventListener("click", () => {
+    confirmBox.classList.remove("hidden");
+  });
+}
+
+confirmReset.addEventListener("click", () => {
+  localStorage.clear();
+  location.reload();
+});
+
+cancelReset.addEventListener("click", () => {
+  confirmBox.classList.add("hidden");
+});
