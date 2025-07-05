@@ -197,17 +197,20 @@ header nav {
   top: 50%;
   transform: translateY(-50%);
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column; /* ← colonne pour tout le bloc menu + boutons */
+  align-items: flex-end;
+  gap: 0.4rem;
 }
 
-/* Liste des liens */
+/* Liste des liens - disposition en colonne */
 nav ul.menu {
   display: flex;
+  flex-direction: column; /* ← disposition verticale */
   gap: 0.4rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: flex-end;
 }
 
 nav ul.menu li a {
