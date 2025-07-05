@@ -250,40 +250,37 @@ if (user) {
   }
 }
 
-// === CLEAR DATA BASE ===
-const clearDataBtn = document.getElementById("clearDataBtn");
-
-// Affiche le bouton uniquement si l'utilisateur est admin (par exemple "ADMIN")
+// === CLEAR DATA BASE (ADMIN only) ===
 const currentUser = localStorage.getItem("username");
-if (currentUser === "ADMIN") {
-  clearDataBtn.style.display = "inline-block";
-}
 
-// Action du bouton
-clearDataBtn.addEventListener("click", () => {
-  if (confirm("⚠️ Tu vas supprimer toutes les données de l’application. Continuer ?")) {
-    localStorage.clear();
-    alert("🧹 Données supprimées !");
-    location.reload();
-  }
-});
-
-const resetBtn = document.getElementById("reset-data");
+const resetBtn = document.getElementById("clearDataBtn");
 const confirmBox = document.getElementById("custom-confirm");
 const confirmReset = document.getElementById("confirm-reset");
 const cancelReset = document.getElementById("cancel-reset");
 
-if (resetBtn) {
-  resetBtn.addEventListener("click", () => {
-    confirmBox.classList.remove("hidden");
-  });
+if (currentUser === "ADMIN") {
+  if (resetBtn) resetBtn.style.display = "inline-block";
+
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      confirmBox.classList.remove("hidden");
+    });
+  }
+
+  if (confirmReset) {
+    confirmReset.addEventListener("click", () => {
+      localStorage.clear();
+      alert("🧹 Données supprimées !");
+      location.reload();
+    });
+  }
+
+  if (cancelReset) {
+    cancelReset.addEventListener("click", () => {
+      confirmBox.classList.add("hidden");
+    });
+  }
+} else {
+  if (resetBtn) resetBtn.style.display = "none";
 }
 
-confirmReset.addEventListener("click", () => {
-  localStorage.clear();
-  location.reload();
-});
-
-cancelReset.addEventListener("click", () => {
-  confirmBox.classList.add("hidden");
-});
