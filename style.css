@@ -1,15 +1,13 @@
-/* 🌐 Thème clair par défaut */
 :root {
   --bg-color: #f4f4f4;
-  --text-color: #000000;
+  --text-color: #000;
   --main-color: #2d6a4f;
   --hover-color: #40916c;
-  --card-bg: #ffffff;
+  --card-bg: #fff;
   --error-color: red;
   --border-radius: 8px;
 }
 
-/* 🌙 Thème sombre */
 body.dark {
   --bg-color: #1e1e1e;
   --text-color: #f1f1f1;
@@ -19,16 +17,16 @@ body.dark {
   --error-color: #ff6b6b;
 }
 
-/* 🧱 Structure de base */
 body {
   font-family: Arial, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
-  padding-top: 70px; /* espace pour le header fixe */
+  padding: 0;
+  padding-top: 60px;
 }
 
-/* 🔝 Header */
+/* HEADER */
 header {
   position: fixed;
   top: 0;
@@ -37,11 +35,11 @@ header {
   height: 60px;
   background-color: var(--main-color);
   color: white;
-  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 header h1 {
@@ -49,40 +47,31 @@ header h1 {
   font-size: 1.2rem;
 }
 
-/* 🧭 Menu latéral droit */
+/* MENU LATÉRAL GAUCHE FIXE */
 .side-menu {
   position: fixed;
-  top: 70px; /* juste sous le header */
-  right: 1rem;
+  top: 60px;
+  left: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 0.6rem;
   z-index: 999;
 }
 
-.side-menu .menu {
+.side-menu .menu,
+.side-menu .nav-actions {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
 }
 
-.side-menu .menu li a {
+.side-menu a {
   background-color: #eee;
   color: var(--main-color);
   text-decoration: none;
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
   font-size: 0.9rem;
-}
-
-.side-menu .nav-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
 }
 
 .side-menu button {
@@ -95,9 +84,8 @@ header h1 {
   cursor: pointer;
 }
 
-/* 📋 Contenu principal */
-main,
-.login-container {
+/* CONTENU PRINCIPAL */
+main, .login-container {
   max-width: 600px;
   margin: 2rem auto;
   padding: 1rem;
@@ -105,15 +93,12 @@ main,
   border-radius: var(--border-radius);
 }
 
-/* 📝 Formulaires */
 form {
   display: flex;
   flex-direction: column;
 }
 
-input,
-textarea,
-select {
+input, textarea, select {
   margin-bottom: 1rem;
   padding: 0.8rem;
   border: 1px solid #ccc;
@@ -133,8 +118,8 @@ button {
   color: white;
   border: none;
   padding: 0.8rem;
-  cursor: pointer;
   border-radius: 4px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
@@ -142,7 +127,6 @@ button:hover {
   background-color: var(--hover-color);
 }
 
-/* 🧾 Listes d’entrées */
 ul {
   list-style-type: none;
   padding: 0;
@@ -159,33 +143,15 @@ body.dark li {
   background: #3a3a3a;
 }
 
-/* 🧪 Divers */
-.preview-section {
-  margin-bottom: 1rem;
-}
-
-.preview-list li {
-  font-size: 0.95rem;
-  padding-left: 0.5rem;
-}
-
 .error {
   color: var(--error-color);
   font-size: 0.9rem;
 }
 
-/* 📱 Responsive */
+/* Responsive */
 @media (max-width: 600px) {
   .side-menu {
-    right: 0.5rem;
-  }
-
-  .side-menu .menu li a {
-    font-size: 0.85rem;
-  }
-
-  main,
-  .login-container {
-    margin: 1rem;
+    left: auto;
+    right: 1rem;
   }
 }
