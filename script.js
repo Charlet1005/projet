@@ -284,7 +284,7 @@ if (currentUser === "ADMIN") {
 
 // === EXPORT DATA ===
 function sauvegarderVersGoogleSheet(entry) {
-  fetch("https://script.google.com/macros/s/AKfycbzivJr4bhX62Jm-g_s85ZcXK6wblgOi7_POjVdflRM_dJVr5Lp9OY5T87axAnqj1_Nd/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzoZ2EVIfh6oxT6YDWqsUBj_K_1LDzv6WfUsw9N22M/dev", {
     method: "POST",
     body: JSON.stringify(entry),
     headers: {
