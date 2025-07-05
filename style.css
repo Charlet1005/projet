@@ -1,4 +1,4 @@
-/* 🌐 Variables générales - Thème clair par défaut */
+/* 🌐 Thème clair par défaut */
 :root {
   --bg-color: #f4f4f4;
   --text-color: #000000;
@@ -9,7 +9,7 @@
   --border-radius: 8px;
 }
 
-/* 🌙 Variables pour le thème sombre */
+/* 🌙 Thème sombre */
 body.dark {
   --bg-color: #1e1e1e;
   --text-color: #f1f1f1;
@@ -19,28 +19,85 @@ body.dark {
   --error-color: #ff6b6b;
 }
 
-/* 🌍 Style de base */
+/* 🧱 Structure de base */
 body {
   font-family: Arial, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
-  padding: 0;
+  padding-top: 70px; /* espace pour le header fixe */
 }
 
-/* Barre de navigation */
-nav {
+/* 🔝 Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
   background-color: var(--main-color);
   color: white;
-  padding: 1rem;
+  z-index: 1000;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* Conteneur principal */
-.login-container,
-main {
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* 🧭 Menu latéral droit */
+.side-menu {
+  position: fixed;
+  top: 70px; /* juste sous le header */
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  z-index: 999;
+}
+
+.side-menu .menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.side-menu .menu li a {
+  background-color: #eee;
+  color: var(--main-color);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.side-menu .nav-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.side-menu button {
+  background-color: var(--main-color);
+  color: white;
+  border: 2px solid white;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* 📋 Contenu principal */
+main,
+.login-container {
   max-width: 600px;
   margin: 2rem auto;
   padding: 1rem;
@@ -48,14 +105,15 @@ main {
   border-radius: var(--border-radius);
 }
 
-/* Formulaire */
+/* 📝 Formulaires */
 form {
   display: flex;
   flex-direction: column;
 }
 
 input,
-textarea {
+textarea,
+select {
   margin-bottom: 1rem;
   padding: 0.8rem;
   border: 1px solid #ccc;
@@ -63,8 +121,13 @@ textarea {
   background-color: white;
 }
 
-/* Boutons */
-.button,
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background-color: #333;
+  color: white;
+}
+
 button {
   background-color: var(--main-color);
   color: white;
@@ -75,12 +138,11 @@ button {
   transition: background-color 0.3s ease;
 }
 
-.button:hover,
 button:hover {
   background-color: var(--hover-color);
 }
 
-/* Liste d'entrées */
+/* 🧾 Listes d’entrées */
 ul {
   list-style-type: none;
   padding: 0;
@@ -93,35 +155,11 @@ li {
   border-radius: 4px;
 }
 
-/* Thème sombre pour les entrées */
 body.dark li {
   background: #3a3a3a;
 }
 
-/* Message d'erreur */
-.error {
-  color: var(--error-color);
-  font-size: 0.9rem;
-}
-
-/* Bouton de changement de thème */
-#toggleTheme {
-  margin-left: auto;
-  font-size: 1.2rem;
-  background: none;
-  color: white;
-  border: 2px solid white;
-  border-radius: var(--border-radius);
-  padding: 0.3rem 0.8rem;
-}
-
-.dashboard {
-  margin-top: 2rem;
-  padding: 1rem;
-  background-color: var(--card-bg);
-  border-radius: var(--border-radius);
-}
-
+/* 🧪 Divers */
 .preview-section {
   margin-bottom: 1rem;
 }
@@ -131,121 +169,23 @@ body.dark li {
   padding-left: 0.5rem;
 }
 
-select {
-  margin-bottom: 1rem;
-  padding: 0.6rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: white;
-}
-
-body.dark select {
-  background: #333;
-  color: white;
-}
-
-@media (max-width: 600px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav .menu {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  nav button {
-    margin-top: 0.5rem;
-  }
-}
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: auto;
-  background-color: var(--main-color);
-  color: white;
-  z-index: 1000;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-/* Centrer le titre */
-header h1 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-/* Nav en colonne à droite */
-header nav {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
-}
-
-nav ul.menu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.3rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-nav ul.menu li a {
-  background-color: #eee;
-  color: var(--main-color);
-  text-decoration: none;
-  padding: 0.4rem 0.6rem;
-  border-radius: 6px;
+.error {
+  color: var(--error-color);
   font-size: 0.9rem;
 }
 
-.nav-actions {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.nav-actions button {
-  background: none;
-  border: 2px solid white;
-  color: white;
-  border-radius: 6px;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-/* Éviter que le contenu passe derrière le header */
-body {
-  padding-top: 140px;
-}
-
-/* Responsive (mobile) */
+/* 📱 Responsive */
 @media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: center;
+  .side-menu {
+    right: 0.5rem;
   }
 
-  header nav {
-    align-items: center;
+  .side-menu .menu li a {
+    font-size: 0.85rem;
   }
 
-  nav ul.menu {
-    align-items: center;
-  }
-
-  .nav-actions {
-    justify-content: center;
+  main,
+  .login-container {
+    margin: 1rem;
   }
 }
