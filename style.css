@@ -165,52 +165,39 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: auto;
   background-color: var(--main-color);
   color: white;
   z-index: 1000;
-  padding: 0 1rem;
+  padding: 1rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 /* Centrer le titre */
 header h1 {
   margin: 0;
-  transform: translateX(-50%);
   font-size: 1.2rem;
-  left: 10%;
-  position: absolute;
 }
 
-/* Pour éviter que le contenu passe derrière */
-body {
-  padding-top: 70px; /* Ajuste selon la hauteur du header */
-}
-
-/* Menu à droite */
+/* Nav en colonne à droite */
 header nav {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
-  flex-direction: column; /* ← colonne pour tout le bloc menu + boutons */
+  flex-direction: column;
   align-items: flex-end;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
-/* Liste des liens - disposition en colonne */
 nav ul.menu {
   display: flex;
-  flex-direction: column; /* ← disposition verticale */
-  gap: 0.4rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  flex-direction: column;
   align-items: flex-end;
+  gap: 0.3rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 nav ul.menu li a {
@@ -222,10 +209,10 @@ nav ul.menu li a {
   font-size: 0.9rem;
 }
 
-/* Actions (boutons) */
 .nav-actions {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
 .nav-actions button {
@@ -236,4 +223,29 @@ nav ul.menu li a {
   padding: 0.3rem 0.6rem;
   font-size: 0.9rem;
   cursor: pointer;
+}
+
+/* Éviter que le contenu passe derrière le header */
+body {
+  padding-top: 140px;
+}
+
+/* Responsive (mobile) */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header nav {
+    align-items: center;
+  }
+
+  nav ul.menu {
+    align-items: center;
+  }
+
+  .nav-actions {
+    justify-content: center;
+  }
 }
