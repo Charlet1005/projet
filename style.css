@@ -178,12 +178,12 @@ header {
 /* Centrer le titre */
 header h1 {
   margin: 0 auto;
-  text-align: center;
-  font-size: 0.7rem;
+  text-align: left;
+  font-size: 1.4rem;
   flex-grow: 1;
 }
 
 /* Pour éviter que le contenu passe derrière */
 body {
-  padding-top: 100px; /* Ajuste selon la hauteur du header */
+  padding-top: 25px; /* Ajuste selon la hauteur du header */
 }
